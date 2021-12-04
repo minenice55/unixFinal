@@ -1,0 +1,16 @@
+[Unit]
+Description=Minecraft Server
+After=network.target
+
+[Service]
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+WorkingDirectory=/opt/minecraft/server
+Environment=LC_ALL=C
+ExecStart=/usr/bin/java -Xms1024M -Xmx3280M -jar /opt/minecraft/server/forge-1.16.5-36.2.8.jar nogui
+User=root
+# https://www.freedesktop.org/software/systemd/man/systemd.service.html
+Restart=on-failure
+RestartSec=20 5
+
+[Install]
+WantedBy=multi-user.target
